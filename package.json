@@ -1,10 +1,14 @@
 {
   "name": "express-access-token",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "ExpressJS middleware that detects access token and attaches to request context (as: req.accessToken)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/num8er/express-access-token.git"
   },
   "keywords": [
     "express",
