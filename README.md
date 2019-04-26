@@ -1,4 +1,4 @@
-# express-access-token
+# express-access-token [![npm version](https://badge.fury.io/js/express-access-token.png)](https://badge.fury.io/js/express-access-token)
 
 Want to create Your own authentication logic?
 This package is one of the bricks that You need.
