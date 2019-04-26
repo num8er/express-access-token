@@ -9,8 +9,7 @@ module.exports = (req, res, next) => {
 
     req.accessToken = [
         req.cookies ? req.cookies.accessToken : null,
-        req.query.accessToken,
-        req.body.accessToken
+        req.query.accessToken
     ].find(token => typeof token === 'string');
 
     

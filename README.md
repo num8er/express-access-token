@@ -5,9 +5,8 @@ This package is one of the bricks that You need.
 
 It detects access token in request:
 1. headers (`Authorization: Bearer {accessToken}`)
-2. cookies (`req.cookies.accessToken`)
+2. cookies (`req.cookies.accessToken`) - `cookie-parser` must be attached
 3. query string (`req.query.accessToken`)
-4. body (`req.body.accessToken`)
 
 and makes available as `req.accessToken`
 
@@ -18,7 +17,6 @@ const
   express = require('express'),
   app = express(),
   cookieParser = require('cookie-parser'),
-  bodyParser = require('body-parser'),
   expressAccessToken = require('express-access-token');
   
 app.use(cookieParser());
