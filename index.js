@@ -2,7 +2,7 @@
 
 module.exports = (req, res, next) => {
     const [left, right] = req.headers.authorization ? req.headers.authorization.split(' ') : [];
-    if(left === 'Bearer') {
+    if(left.match(/bearer/i)) {
         req.accessToken = right;
         return next();
     }
