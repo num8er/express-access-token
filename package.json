@@ -1,10 +1,10 @@
 {
   "name": "express-access-token",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "ExpressJS middleware that detects access token and attaches to request context (as: req.accessToken)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -18,5 +18,10 @@
     "access-token"
   ],
   "author": "Anar K. Jafarov <anar.k.jafarov@gmail.com> (http://anarjafarov.me)",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "cookie-parser": "1.4.5",
+    "express": "4.17.1",
+    "jest": "26.5.2"
+  }
 }

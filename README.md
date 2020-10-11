@@ -3,8 +3,8 @@
 Want to create Your own authentication logic?
 This package is one of the bricks that You need.
 
-It detects access token in request:
-1. headers (`Authorization: Bearer {accessToken}`)
+It extracts string values that can be used as access token from:
+1. headers (`Authorization: Bearer {accessToken}`, `Authorization: {accessToken}`)
 2. cookies (`req.cookies.accessToken`) - `cookie-parser` must be attached
 3. query string (`req.query.accessToken`)
 
