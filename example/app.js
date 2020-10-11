@@ -1,25 +1,22 @@
-const
-  express = require('express'),
-  app = express(),
-  cookieParser = require('cookie-parser'),
-  bodyParser = require('body-parser'),
-  expressAccessToken = require('express-access-token'),
-  firewall = require('./middlewares/firewall');
-  
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const expressAccessToken = require('express-access-token');
+const firewall = require('./middlewares/firewall');
+
+const app = express();
 app.use(cookieParser());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
 
 // attaching to route group
-app.use('/api', 
-        expressAccessToken, // attaching accessToken to request
-        firewall, // firewall middleware that handles uses req.accessToken
-        require('./routes/api'));
-        
-// attaching to dedicated method, route
-app.get('/restricted-route', 
-        expressAccessToken, // attaching accessToken to request
-        firewall, // firewall middleware that handles uses req.accessToken
-        (req, res) => res.send('Welcome to restricted page'));
+app.use('/api',
+  expressAccessToken, // attaching accessToken to request
+  firewall, // firewall middleware that handles uses req.accessToken
+  require('./routes/api'));
 
-app.listen(8080, () => console.log('app listening'));
+// attaching to dedicated method, route
+app.get('/restricted-route',
+  expressAccessToken, // attaching accessToken to request
+  firewall, // firewall middleware that handles uses req.accessToken
+  (req, res) => res.send('Welcome to restricted page'));
+
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => console.log(`app listening at: ${PORT}`));

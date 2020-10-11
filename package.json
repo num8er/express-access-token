@@ -1,14 +1,38 @@
 {
   "name": "express-access-token",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "ExpressJS middleware that detects access token and attaches to request context (as: req.accessToken)",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "lint": "./node_modules/.bin/eslint .",
+    "lint:fix": "./node_modules/.bin/eslint . --fix"
   },
+  "engines": {
+    "node": ">=12.0"
+  },
+  "engineStrict": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/num8er/express-access-token.git"
+  },
+  "devDependencies": {
+    "cookie-parser": "1.4.5",
+    "express": "4.17.1",
+    "jest": "26.5.2",
+    "babel-eslint": "10.1.0",
+    "editorconfig": "0.15.3",
+    "eslint": "7.11.0",
+    "eslint-config-node": "4.1.0",
+    "eslint-config-prettier": "6.12.0",
+    "eslint-config-standard": "14.1.1",
+    "eslint-plugin-editorconfig": "2.1.3",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-promise": "4.2.1",
+    "eslint-plugin-standard": "4.0.1",
+    "husky": "4.3.0",
+    "prettier": "2.1.2"
   },
   "keywords": [
     "express",
@@ -18,10 +42,5 @@
     "access-token"
   ],
   "author": "Anar K. Jafarov <anar.k.jafarov@gmail.com> (http://anarjafarov.me)",
-  "license": "ISC",
-  "devDependencies": {
-    "cookie-parser": "1.4.5",
-    "express": "4.17.1",
-    "jest": "26.5.2"
-  }
+  "license": "ISC"
 }

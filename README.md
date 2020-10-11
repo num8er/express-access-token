@@ -1,6 +1,6 @@
 # express-access-token [![npm version](https://badge.fury.io/js/express-access-token.png)](https://badge.fury.io/js/express-access-token)
 
-Want to create Your own authentication logic?
+Want to create Your own authorization logic?
 This package is one of the bricks that You need.
 
 It extracts string values that can be used as access token from:
@@ -10,18 +10,19 @@ It extracts string values that can be used as access token from:
 
 and makes available as `req.accessToken`
 
+!!! don't use this middleware for `Authorization: Basic username:password` scheme, since it's not access token based authorization logic, read: [RFC7617](https://tools.ietf.org/html/rfc7617)
 
-Usage:
+----
+
+Example:
 ```
-const
-  express = require('express'),
-  app = express(),
-  cookieParser = require('cookie-parser'),
-  expressAccessToken = require('express-access-token');
-  
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const expressAccessToken = require('express-access-token');
+
+const app = express();
 app.use(cookieParser());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+
 
 const accessTokens = [
   "6d7f3f6e-269c-4e1b-abf8-9a0add479511",
@@ -34,17 +35,21 @@ const firewall = (req, res, next) => {
   next();
 };
 
-// attaching to route group
-app.use('/api', 
-        expressAccessToken, // attaching accessToken to request
-        firewall, // firewall middleware that handles uses req.accessToken
-        require('./routes/api'));
-        
-// attaching to dedicated method, route
-app.get('/restricted-route', 
-        expressAccessToken, // attaching accessToken to request
-        firewall, // firewall middleware that handles uses req.accessToken
-        (req, res) => res.send('Welcome to restricted page'));
 
-app.listen(8080, () => console.log('app listening'));
+// attaching to route group
+app.use('/api',
+  expressAccessToken, // attaching accessToken to request
+  firewall, // firewall middleware that handles uses req.accessToken
+  (req, res) => res.status(200).send({message: 'api route'}));
+
+
+// attaching to dedicated method, route
+app.get('/restricted-route',
+  expressAccessToken, // attaching accessToken to request
+  firewall, // firewall middleware that handles uses req.accessToken
+  (req, res) => res.send('Welcome to restricted page'));
+
+
+const PORT = process.env.PORT || 8080
+app.listen(PORT, () => console.log(`app listening at: ${PORT}`));
 ```
