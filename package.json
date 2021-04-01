@@ -1,6 +1,6 @@
 {
   "name": "express-access-token",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "ExpressJS middleware that detects access token and attaches to request context (as: req.accessToken)",
   "main": "index.js",
   "scripts": {
