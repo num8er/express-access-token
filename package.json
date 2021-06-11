@@ -33,11 +33,6 @@
     "jest": "27.0.4",
     "prettier": "2.3.1"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn lint && yarn test"
-    }
-  },
   "keywords": [
     "express",
     "middleware",
