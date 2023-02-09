@@ -15,7 +15,7 @@ and makes available as `req.accessToken`
 ----
 
 Example:
-```
+```js
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const expressAccessToken = require('express-access-token');
